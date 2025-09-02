@@ -126,7 +126,6 @@ Back in the Console navigate to  the **Multi-Cloud App Connect** service in the 
 Select **HTTP Load Balancers**. Click the **Add HTTP Load Balancer** button to open the form of HTTP Load Balancer creation.
 
 .. figure:: assets/load_balancer_navigate_menu.png
-   :width: 500px
 
 
 Then enter a name for the load balancer.
@@ -308,8 +307,6 @@ The screenshot below represents how the malicious user can look like.
 API Protection 
 **************
 
-TBD
-
 Protecting API resources is a critical piece of a holistic application security strategy. API Security helps us analyze and baseline normal levels of traffic, response rates, sizes and data being shared via APIs. 
 
 Without API protection all traffic goes directly to the server and can be harmful. Let's take a look at an attack on our sample app and then protect its API.
@@ -320,11 +317,11 @@ Go back to the Test Tool  `<https://test-tool.sr.f5-cloud-demo.com>`_, and switc
 
 Distributed Cloud API Security helps protect API resources based on an Open API specification, typically captured in a Swagger file. The API Security service supports the upload of an Open API specification file, which contains API routes that can be protected by the Web App Firewall, as well as methods that can be enabled and disabled. 
 
-To start API protection configuration, go back to the F5 Distributed Cloud Console, select **Swagger Files** and click **Add Swagger File**. 
+To start API protection configuration, go back to the F5 Distributed Cloud Console, navigate to the **Web App & API Protection** service => **Files** => **OpenAPI Files**. Click **Add OpenAPI File**. 
 
 .. figure:: assets/swagger_navigate.png
 
-Give swagger file a name and then upload it. Once it's uploaded, click **Save and Exit**.
+Give swagger file a name and then upload it. Once it's uploaded, click **Add OpenAPI File**.
    
 .. figure:: assets/swagger_upload_file.png
 
@@ -332,7 +329,7 @@ Now over to creating API Definition. Navigate to **API Definition** and then cli
 
 .. figure:: assets/api_definition_navigate.png
 
-Enter a name in the metadata section. Then go to **Swagger Specs** section and open the drop-down menu. Select the swagger spec added earlier, then click **Save and Exit** to create API definition object.
+Enter a name in the metadata section. Then go to **OpenAPI Specification Files** section and open the drop-down menu. Select the swagger spec added earlier, then click **Save API Definition** to create API definition object.
 
 .. figure:: assets/api_definition_create.png
 
@@ -358,7 +355,7 @@ Click on the **Select Item** field and select **Add Item** option.
 
 .. figure:: assets/api_definition_policy_create.png
 
-Enter a name for the policy in the metadata section and go to the **Rules** section. Select **Custom Rule List** and click **Configure**.
+Enter a name for the policy in the metadata section and go to the **Rules** section. Make sure **Custom Rule List** is specified. Click **Configure**.
 
 .. figure:: assets/api_definition_policy_create_rules.png
 
@@ -382,23 +379,15 @@ Scroll down to **Advanced Match** section and click **Configure** for the API Gr
 
 .. figure:: assets/api_definition_rules_api_matcher.png
 
-In the API Group Matcher screen, select an exact value. 
+In the API Group Matcher screen, select an exact value. Tick the **Invert String Matcher** option and click **Apply** to add the matcher. 
 
 .. figure:: assets/api_definition_rules_matcher_select_api_def.png
 
-Tick the **Invert String Matcher** option and click **Apply** to add the matcher. 
-
-.. figure:: assets/api_definition_matcher_tick.png
-
- Click another **Apply** to add the rule specification. 
+Click another **Apply** to add the rule specification. 
 
 .. figure:: assets/api_definition_policy_apply.png
 
-Click **Apply** to add the rule.
-
-.. figure:: assets/api_definition_add_rule.png
-
-Create one more rule to 'allow-other' using the **Add Item** option in the rules section. 
+Create one more rule to 'allow-other' using the **Add Item** option. 
 
 .. figure:: assets/api_definition_second_rule.png
 
@@ -406,29 +395,23 @@ First, enter a name in the metadata section.
    
 .. figure:: assets/api_definition_second_rule_details.png
 
-Next, select **Allow** for Action field in the Action section.
+Next, select **Allow** for Action field in the Action section. Click **Apply** to add the rule specification.
 
 .. figure:: assets/api_definition_second_rule_allow.png
-
-Click **Apply** to add the rule specification.
-
-.. figure:: assets/api_definition_second_rule_apply.png
-
-Click **Apply** to add the second rule.
-
-.. figure:: assets/api_definition_second_rule_add.png
 
 Take a look at the rules created and click **Apply**. 
 
 .. figure:: assets/api_definition_rule_list_apply.png
 
-Click **Continue** to add the service policy to the load balancer and then **Apply**.
+Click **Add Service policy** to add the service policy to the load balancer.
 
 .. figure:: assets/api_definition_continue.png
 
+Proceed by clicking **Apply**.
+
 .. figure:: assets/api_definition_def_policy_apply.png
 
-The last step is to look the configuration through and save the edited HTTP load balancer. Once you click **Save and Exit** at the end, the Load Balancer will update with the API security settings and our API resources will be protected!
+The last step is to look the configuration through and save the edited HTTP load balancer. Once you click **Save HTTP Load Balancer** at the end, the Load Balancer will update with the API security settings and our API resources will be protected!
 
 .. figure:: assets/api_definition_lb_save.png
 
@@ -443,6 +426,8 @@ Go back to the Test Tool  `<https://test-tool.sr.f5-cloud-demo.com>`_, and click
 In cases where API specifications are not known or well documented, the F5 Distributed Cloud API Security provides a machine learning (ML)-based, dynamic API Discovery service.
 
 API Discovery analyzes traffic that flows to and from API endpoints and constructs a visual graph to detail API path relationships. It may be difficult for an organization to keep track of APIs, as they typically change frequently. Over time F5 Distributed Cloud can baseline normal API behavior, usage, and methods, detecting anomalies and helping organization detect shadow APIs that bring unintended risk.
+
+TBD
 
 In the screenshot below we can see the percent of requests, learned schema for a specific endpoint, and even download an automatically-generated Swagger file based on discovered APIs.
 
