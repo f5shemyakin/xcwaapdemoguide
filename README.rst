@@ -105,9 +105,10 @@ For the next step you need to have the `kubectl tool <https://kubernetes.io/docs
 
 In your client environment, open the command line interface (cli) and run the **kubectl** tool to execute a command to deploy the sample app. Type the path to the downloaded credentials file for the kubeconfig parameter. **vk8s-manifest.yaml** you can find in this project repository.
 
-```
-kubectl --kubeconfig {{ path to the credentials file  }} apply -f vk8s-manifest.yaml
-```
+Run the following command:: 
+    
+    kubectl --kubeconfig {{ path to the credentials file  }} apply -f vk8s-manifest.yaml
+
 
 .. figure:: assets/vk8s_deploy.png
    :width: 600px
