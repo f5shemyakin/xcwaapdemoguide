@@ -427,8 +427,6 @@ In cases where API specifications are not known or well documented, the F5 Distr
 
 API Discovery analyzes traffic that flows to and from API endpoints and constructs a visual graph to detail API path relationships. It may be difficult for an organization to keep track of APIs, as they typically change frequently. Over time F5 Distributed Cloud can baseline normal API behavior, usage, and methods, detecting anomalies and helping organization detect shadow APIs that bring unintended risk.
 
-TBD
-
 In the screenshot below we can see the percent of requests, learned schema for a specific endpoint, and even download an automatically-generated Swagger file based on discovered APIs.
 
 .. figure:: assets/api_auto_discovery.png 
@@ -442,7 +440,7 @@ First let's generate some bot traffic to our app. Go back to the Test Tool  `<ht
 
 .. figure:: assets/test_bot_1.png
 
-Navigate to **HTTP Load Balancers**, open the menu of the load balancer we created earlier and select **Manage Configuration**.
+In the Console, navigate to **HTTP Load Balancers**, open the menu of the load balancer we created earlier and select **Manage Configuration**.
 
 .. figure:: assets/bot_lb_popup.png
 
@@ -463,10 +461,13 @@ Click **Add Item** to start adding an endpoint.
 .. figure:: assets/bot_config_endpoint_add.png
 
 Name the endpoint and then select HTTP Methods. Let's pick **PUT** and **POST** for this demo. Scroll down and fill in the path - **/api/v1/**.
+
+.. figure:: assets/bot_full_config.png
+
 Then set Bot Traffic Mitigation options to **Block** action for identified bot traffic, and select **403 Forbidden** status. 
 Go ahead and click **Apply** to complete the App Endpoint setup.
 
-.. figure:: assets/bot_full_config.png
+.. figure:: assets/bot_full_config2.png
 
 We’ve just defined the policy to protect our vulnerable Rating app resource with Bot Defense enabled. Now, click **Apply** to confirm.
 
@@ -476,7 +477,7 @@ Click **Apply** to apply the configured Bot Defense Policy.
 
 .. figure:: assets/bot_config_apply.png
 
-To complete the configuration of load balancer, click **Save and Exit**.
+To complete the configuration of load balancer, click **Save HTTP Load Balancer**.
 
 .. figure:: assets/bot_lb_save.png
 
@@ -484,7 +485,7 @@ Now we can test and see the end-result of our setup. Go back to the Test Tool  `
 
 .. figure:: assets/test_bot_2.png
 
-Now let’s have a look at the Security analytics for the HTTP Load Balancer where we configured Bot Defense. Navigate to **Dashboards**, then **Security Dashboard** and click on the load balancer name.
+Now let’s have a look at the Security analytics for the HTTP Load Balancer where we configured Bot Defense. Navigate to **Security** and click on the load balancer name.
 
 .. figure:: assets/bot_dashboard_0.png
 
@@ -525,7 +526,7 @@ First specify number, then burst multiplier. For this use-case we specify **10**
 
 .. figure:: assets/ddos_rate_limit_config.png
 
-In the **DoS Protection** section enable DDoS detection in the drop-down menu and click **Configure** to add a new rule.
+In the **DoS Settings** section click **Configure** to add a new DDoS Mitigation rule.
 
 .. figure:: assets/ddos_detection.png
 
@@ -534,15 +535,19 @@ Next click the **Add Item** button to open the form where we will create an ‘I
 
 .. figure:: assets/ddos_mitigation_add.png
 
-Give rule a name, specify IP we want to block - **203.0.113.0/24** and indicate the expiration time stamp. Finally, click the **Apply** which will create our DDoS Mitigation rule.
+First, give rule a name.
 
 .. figure:: assets/ddos_mitigation_rule.png
+
+Then specify IP we want to block - **203.0.113.0/24** and indicate the expiration time stamp. Finally, click the **Apply** which will create our DDoS Mitigation rule.
+
+.. figure:: assets/ddos_mitigation_rule2.png
 
 Click **Apply** to apply the rule we've created.
 
 .. figure:: assets/ddos_mitigation_rule_apply.png
 
-And finally we need to click **Save and Exit** to save these changes and allow the F5 Distributed Cloud WAF engine to start enforcing our newly created DDoS Mitigation rule and blocking the malicious IP.
+And finally we need to click **Save HTTP Load Balancer** to save these changes and allow the Distributed Cloud WAF engine to start enforcing our newly created DDoS Mitigation rule and blocking the malicious IP.
 
 .. figure:: assets/ddos_save_lb.png
 
@@ -550,7 +555,7 @@ See how easy that was! This should definitely help with the performance and upti
 
 We have created the service policy to block that malicious IP. Now let’s have a look at the reporting and analytics for the HTTP Load Balancer where we configured the policy for our app. 
 
-Navigate to the **Dashboards** and proceed to the **Security Dashboard** option. Scroll down and click the load balancer we created. 
+Navigate to the **Security**. Scroll down and click the load balancer we created. 
 
 .. figure:: assets/bot_dashboard_0.png
 
@@ -567,4 +572,4 @@ Wrap-Up
 
 At this stage you should have set up a sample app and sent traffic to it. You've configured and applied F5 Distributed Cloud WAAP services in order to protect both the Web & API of the app from malicious actors & bots. We also looked at the telemetry and insights from the data in the various Dashboards & security events.
 
-We hope you have a better understanding of the F5 Distributed Cloud WAAP services and are now ready to implement it for your own organization. Should you have any issues or questions, please feel free to raise them via GitHub. Thank you!
+We hope you have a better understanding of the Distributed Cloud WAAP services and are now ready to implement them for your own organization. Should you have any issues or questions, please feel free to raise them via GitHub. Thank you!
